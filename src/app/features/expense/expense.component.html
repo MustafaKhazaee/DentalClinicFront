@@ -1,0 +1,35 @@
+<mat-card-title>{{ Texts.ExpenseManagement | Translate }}</mat-card-title>
+<div class="searchBar">
+  <form [formGroup]="expenseForm">
+    <label for="itemname">
+      {{ Texts.ItemName | Translate }} : <input class="searchBarInput" #itemname type="text">
+    </label>
+    <mat-form-field appearance="outline">
+      <mat-label>{{ Texts.StartDate | Translate }}</mat-label>
+      <input matInput formControlName="startDate" [matDatepicker]="myDatePicker1">
+      <mat-datepicker-toggle matSuffix [for]="myDatePicker1">
+      </mat-datepicker-toggle>
+      <mat-datepicker #myDatePicker1></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>{{ Texts.EndDate | Translate }}</mat-label>
+      <input matInput formControlName="endDate" [matDatepicker]="myDatePicker">
+      <mat-datepicker-toggle matSuffix [for]="myDatePicker">
+      </mat-datepicker-toggle>
+      <mat-datepicker #myDatePicker></mat-datepicker>
+    </mat-form-field>
+  </form>
+</div>
+<app-table *ngIf="dataLoaded"
+  [table]="table"
+  [excludedColumns]="excludedColumns"
+  [canEdit]="canEdit"
+  [canDelete]="canDelete"
+  (editRow)="editExpense($event)"
+  (deleteRow)="deleteExpense($event)"
+  (tablePaging)="handlePaging($event)"
+  (rowDetails)="showDetails($event)">
+</app-table>
+<mat-card-footer>
+  main card footer
+</mat-card-footer>

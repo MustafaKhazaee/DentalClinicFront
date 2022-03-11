@@ -1,0 +1,35 @@
+<mat-card-title>{{ Texts.Visits | Translate }}</mat-card-title>
+<div class="form-container">
+  <div class="searchBar">
+    <form [formGroup]="visitForm">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ Texts.StartDate | Translate }}</mat-label>
+        <input matInput formControlName="startDate" [matDatepicker]="myDatePicker1">
+        <mat-datepicker-toggle matSuffix [for]="myDatePicker1">
+        </mat-datepicker-toggle>
+        <mat-datepicker #myDatePicker1></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ Texts.EndDate | Translate }}</mat-label>
+        <input matInput formControlName="endDate" [matDatepicker]="myDatePicker">
+        <mat-datepicker-toggle matSuffix [for]="myDatePicker">
+        </mat-datepicker-toggle>
+        <mat-datepicker #myDatePicker></mat-datepicker>
+      </mat-form-field>
+    </form>
+    <!-- <button type="button" (click)="toExcel()" mat-raised-button class="submitButton transitionButton">
+      {{ Texts.Save | Translate }} <mat-icon>save</mat-icon>
+    </button> -->
+  </div>
+  <mat-card-content class="flex-box-show">
+      <div *ngIf="renderChart">
+        <canvas height="540" width="800" baseChart
+          [datasets]="chartData"
+          [labels]="charLabels"
+          [options]="chartOptions"
+          [plugins]="chartPlugins"
+          [chartType]="chartType">
+        </canvas>
+    </div>
+  </mat-card-content>
+</div>

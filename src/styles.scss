@@ -1,0 +1,148 @@
+// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+// @import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
+// @import "~@angular/material/prebuilt-themes/purple-green.css";
+html, body {
+  height: 100%;
+  ::-webkit-scrollbar {
+    height: 14px;
+    width: 14px;
+    background-color: rgb(199, 255, 255);
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #6e40bd;
+    border-radius: 10px;
+    border: 4px solid rgba(220, 251, 255, 0.829);
+    box-shadow:
+              0 1px 1px rgba(0, 0, 0, 0.25),
+              0 2px 2px rgba(0, 0, 0, 0.20),
+              0 4px 4px rgba(0, 0, 0, 0.15),
+              0 8px 8px rgba(0, 0, 0, 0.13);
+  }
+  .flex-box-show {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-content: center;
+    align-items: center !important;
+    margin: 0;
+    padding: 5px;
+  }
+  .mat-form-field, mat-slide-toggle {
+    flex: 1 0 20%;
+    padding: 0 5px 0 5px;
+  }
+  div.mat-form-field-flex {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25),
+                0 2px 2px rgba(0, 0, 0, 0.20),
+                0 4px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+  }
+  .mat-slide-toggle-bar {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25),
+                0 2px 2px rgba(0, 0, 0, 0.20),
+                0 4px 4px rgba(0, 0, 0, 0.15),
+                0 8px 8px rgba(0, 0, 0, 0.13),
+                0 15px 15px rgba(0, 0, 0, 0.08),
+                1px 0 1px rgba(0, 0, 0, 0.25),
+                2px 0 2px rgba(0, 0, 0, 0.20);
+  }
+  .form-container, .table-container {
+    font-size: 0.9em;
+    margin: 0 auto;
+    text-align: center;
+    background-color: rgb(250, 250, 250);
+    border-radius: 10px;
+    overflow-x: hidden;
+    margin-top: 15px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25),
+                0 2px 2px rgba(0, 0, 0, 0.20),
+                0 4px 4px rgba(0, 0, 0, 0.15),
+                0 8px 8px rgba(0, 0, 0, 0.13),
+                0 15px 15px rgba(0, 0, 0, 0.08),
+                1px 0 1px rgba(0, 0, 0, 0.25),
+                2px 0 2px rgba(0, 0, 0, 0.20);
+  }
+  button.transitionButton:hover {
+    transform: scale(1.1);
+    transition: transform 0.5s;
+  }
+  button.transitionButton {
+    transition: 0.5s;
+    margin: 6px 8px -8px 8px !important;
+    border-radius: 20px;
+  }
+  button.submitButton {
+    background-color: rgb(0, 167, 0);
+    color: white;
+  }
+  .table-layout {
+    width: 100%;
+    padding: 5px;
+    overflow-x: auto;
+    display: block;
+    white-space: nowrap;
+  }
+  th {
+    background-color: #000000;
+    color: white;
+    font-weight: normal;
+    padding: 10px;
+  }
+  td.not-operation {
+    padding: 8px
+  }
+  td {
+    color: rgb(0, 0, 0);
+  }
+  td, th {
+    border-radius: 5px;
+    box-shadow:
+                0 1px 1px rgba(0, 0, 0, 0.25),
+                0 2px 2px rgba(0, 0, 0, 0.20),
+                0 4px 4px rgba(0, 0, 0, 0.15),
+                0 8px 8px rgba(0, 0, 0, 0.13);
+    text-shadow:
+                0 1px 1px rgba(0, 0, 0, 0.25);
+  }
+  tr:nth-child(even) {
+    background-color: #f7f1ff;
+  }
+  tr:nth-child(odd) {
+    background-color: #f3fff3;
+  }
+  td:last-child {
+    background-color: rgb(255, 243, 220);
+  }
+  input.searchBarInput {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    padding: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25),
+                0 2px 2px rgba(0, 0, 0, 0.20);
+  }
+  .searchBar {
+    display: flex;
+    left: 0;
+    padding: 0px 10px;
+    align-content: flex-start;
+    flex-wrap: wrap;
+  }
+  .searchBar > label {
+    margin: 4px;
+  }
+  .dialogButton {
+    margin-top: 18px;
+  }
+  mat-progress-bar .mat-progress-bar-buffer {
+    background: rgb(220, 255, 0);
+  }
+  mat-progress-spinner {
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50px);
+  }
+}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: rgb(210,230,210); }

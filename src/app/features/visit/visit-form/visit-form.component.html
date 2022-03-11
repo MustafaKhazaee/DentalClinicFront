@@ -1,0 +1,86 @@
+<mat-card-title *ngIf="!editing">{{ Texts.VisitManagement | Translate }}</mat-card-title>
+<div class="form-container">
+  <mat-dialog-content>
+    <form [formGroup]="visitForm" (submit)="submitForm()">
+      <mat-card-content class="flex-box-show">
+        <mat-form-field appearance="outline">
+          <mat-label>{{ Texts.Doctor | Translate }}</mat-label>
+          <mat-select formControlName="doctorId">
+            <mat-option *ngFor="let doctor of doctors" value="{{ doctor.id }}">{{ doctor.firstName }} {{ doctor.lastName }}</mat-option>
+          </mat-select>
+          <mat-error>Doctor is Required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ Texts.Patient | Translate }}</mat-label>
+          <mat-select formControlName="patientId">
+            <mat-option *ngFor="let patient of patients" value="{{ patient.id }}">{{ patient.firstName }} {{ patient.lastName }} {{ patient.mobile }}</mat-option>
+          </mat-select>
+          <mat-error>Patient is Required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ Texts.Room | Translate }}</mat-label>
+          <input matInput formControlName="room">
+          <mat-error>Room is required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ Texts.PreOperationFee | Translate }}</mat-label>
+          <input matInput type="number" formControlName="preOperationFee">
+          <mat-error>Fee is required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ Texts.PostOperationFee | Translate }}</mat-label>
+          <input matInput type="number" formControlName="postOperationFee">
+          <mat-error>Fee is required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ Texts.ScheduleDate | Translate }}</mat-label>
+          <input matInput type="datetime-local" formControlName="scheduleDate">
+        </mat-form-field>
+        <!-- <mat-form-field appearance="outline">
+          <mat-label>{{ Texts.ScheduleDate | Translate }}</mat-label>
+          <input matInput formControlName="scheduleDate" [matDatepicker]="myDatePicker1">
+          <mat-datepicker-toggle matSuffix [for]="myDatePicker1">
+          </mat-datepicker-toggle>
+          <mat-datepicker #myDatePicker1></mat-datepicker>
+        </mat-form-field> -->
+        <mat-form-field appearance="outline">
+          <mat-label>{{ Texts.DoneDate | Translate }}</mat-label>
+          <input matInput formControlName="doneDate" [matDatepicker]="myDatePicker">
+          <mat-datepicker-toggle matSuffix [for]="myDatePicker">
+          </mat-datepicker-toggle>
+          <mat-datepicker #myDatePicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ Texts.OperationType | Translate }}</mat-label>
+          <mat-select formControlName="operation" [compareWith]="compareOperation">
+            <mat-option *ngFor="let operation of operations" value="{{ operation.number }}">{{ operation.name | Translate }}</mat-option>
+          </mat-select>
+          <mat-error>Operation type is required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ Texts.PriorityLevel | Translate }}</mat-label>
+          <mat-select formControlName="priorityLevel" [compareWith]="comparePriority">
+            <mat-option *ngFor="let priority of priorities" value="{{ priority.number }}">{{ priority.name | Translate }}</mat-option>
+          </mat-select>
+          <mat-error>Priority level is required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ Texts.Description | Translate }}</mat-label>
+          <input matInput formControlName="description">
+        </mat-form-field>
+      </mat-card-content>
+      <mat-divider inset *ngIf="!editing"></mat-divider>
+      <mat-card-actions>
+        <button id="clearVisitForm" *ngIf="!editing" class="transitionButton" type="reset" mat-raised-button color="accent">{{ Texts.Cancel | Translate }}
+          <mat-icon>clear</mat-icon></button>
+        <button *ngIf="!editing" [disabled]="!visitForm.valid" type="submit" mat-raised-button
+          class="submitButton transitionButton">{{ Texts.Save | Translate }} <mat-icon>save</mat-icon></button>
+        <button *ngIf="editing" [disabled]="!visitForm.valid" type="button" (click)="submitEdit()" mat-raised-button
+          class="submitButton transitionButton">{{ Texts.Save | Translate }} <mat-icon>save</mat-icon></button>
+      </mat-card-actions>
+    </form>
+  </mat-dialog-content>
+</div>
+<mat-card-footer *ngIf="!editing">
+  main card footer
+</mat-card-footer>

@@ -1,0 +1,90 @@
+<mat-card-title *ngIf="!editing">{{ Texts.RoleManagement | Translate }}</mat-card-title>
+<div class="form-container">
+  <mat-dialog-content>
+    <form [formGroup]="roleForm" (submit)="submitForm()">
+      <mat-card-content>
+        <mat-form-field class="rolename-container" appearance="outline">
+          <mat-label>{{ Texts.RoleName | Translate }}</mat-label>
+          <input matInput formControlName="rolename">
+          <mat-error>Role Name is required</mat-error>
+        </mat-form-field>
+        <mat-slide-toggle *ngIf="!editing" (change)="toggleAll($event)" color="warn">{{ Texts.All | Translate }}</mat-slide-toggle>
+        <div formGroupName="permissions">
+          <div class="permissions-container">
+            <h3 class="permission-label">{{ Texts.Users | Translate }}&nbsp;&nbsp;:&nbsp;&nbsp;</h3>
+            <mat-slide-toggle formControlName="00">{{ Texts.Get | Translate }}</mat-slide-toggle>
+            <mat-slide-toggle formControlName="01" color="accent">{{ Texts.Add | Translate }}</mat-slide-toggle>
+            <mat-slide-toggle formControlName="02" color="warn">{{ Texts.Edit | Translate }}</mat-slide-toggle>
+            <mat-slide-toggle formControlName="03" color="primary">{{ Texts.Delete | Translate }}</mat-slide-toggle>
+          </div>
+          <mat-divider inset></mat-divider>
+          <div class="permissions-container">
+            <h3 class="permission-label">{{ Texts.Doctors | Translate }}&nbsp;&nbsp;:&nbsp;&nbsp;</h3>
+            <mat-slide-toggle formControlName="10">{{ Texts.Get | Translate }}</mat-slide-toggle>
+            <mat-slide-toggle formControlName="11" color="accent">{{ Texts.Add | Translate }}</mat-slide-toggle>
+            <mat-slide-toggle formControlName="12" color="warn">{{ Texts.Edit | Translate }}</mat-slide-toggle>
+            <mat-slide-toggle formControlName="13" color="primary">{{ Texts.Delete | Translate }}</mat-slide-toggle>
+          </div>
+          <mat-divider inset></mat-divider>
+          <div class="permissions-container">
+            <h3 class="permission-label">{{ Texts.Employees | Translate }}&nbsp;&nbsp;:&nbsp;&nbsp;</h3>
+            <mat-slide-toggle formControlName="20">{{ Texts.Get | Translate }}</mat-slide-toggle>
+            <mat-slide-toggle formControlName="21" color="accent">{{ Texts.Add | Translate }}</mat-slide-toggle>
+            <mat-slide-toggle formControlName="22" color="warn">{{ Texts.Edit | Translate }}</mat-slide-toggle>
+            <mat-slide-toggle formControlName="23" color="primary">{{ Texts.Delete | Translate }}</mat-slide-toggle>
+          </div>
+          <mat-divider inset></mat-divider>
+          <div class="permissions-container">
+            <h3 class="permission-label">{{ Texts.Expenses | Translate }}&nbsp;&nbsp;:&nbsp;&nbsp;</h3>
+            <mat-slide-toggle formControlName="30">{{ Texts.Get | Translate }}</mat-slide-toggle>
+            <mat-slide-toggle formControlName="31" color="accent">{{ Texts.Add | Translate }}</mat-slide-toggle>
+            <mat-slide-toggle formControlName="32" color="warn">{{ Texts.Edit | Translate }}</mat-slide-toggle>
+            <mat-slide-toggle formControlName="33" color="primary">{{ Texts.Delete | Translate }}</mat-slide-toggle>
+          </div>
+          <mat-divider inset></mat-divider>
+          <div class="permissions-container">
+            <h3 class="permission-label">{{ Texts.Patients | Translate }}&nbsp;&nbsp;:&nbsp;&nbsp;</h3>
+            <mat-slide-toggle formControlName="40">{{ Texts.Get | Translate }}</mat-slide-toggle>
+            <mat-slide-toggle formControlName="41" color="accent">{{ Texts.Add | Translate }}</mat-slide-toggle>
+            <mat-slide-toggle formControlName="42" color="warn">{{ Texts.Edit | Translate }}</mat-slide-toggle>
+            <mat-slide-toggle formControlName="43" color="primary">{{ Texts.Delete | Translate }}</mat-slide-toggle>
+          </div>
+          <mat-divider inset></mat-divider>
+          <div class="permissions-container">
+            <h3 class="permission-label">{{ Texts.Roles | Translate }}&nbsp;&nbsp;:&nbsp;&nbsp;</h3>
+            <mat-slide-toggle formControlName="50">{{ Texts.Get | Translate }}</mat-slide-toggle>
+            <mat-slide-toggle formControlName="51" color="accent">{{ Texts.Add | Translate }}</mat-slide-toggle>
+            <mat-slide-toggle formControlName="52" color="warn">{{ Texts.Edit | Translate }}</mat-slide-toggle>
+            <mat-slide-toggle formControlName="53" color="primary">{{ Texts.Delete | Translate }}</mat-slide-toggle>
+          </div>
+          <mat-divider inset></mat-divider>
+          <div class="permissions-container">
+            <h3 class="permission-label">{{ Texts.Visits | Translate }}&nbsp;&nbsp;:&nbsp;&nbsp;</h3>
+            <mat-slide-toggle formControlName="60">{{ Texts.Get | Translate }}</mat-slide-toggle>
+            <mat-slide-toggle formControlName="61" color="accent">{{ Texts.Add | Translate }}</mat-slide-toggle>
+            <mat-slide-toggle formControlName="62" color="warn">{{ Texts.Edit | Translate }}</mat-slide-toggle>
+            <mat-slide-toggle formControlName="63" color="primary">{{ Texts.Delete | Translate }}</mat-slide-toggle>
+            <mat-slide-toggle formControlName="64" color="warn">{{ Texts.Live | Translate }}</mat-slide-toggle>
+          </div>
+          <mat-divider inset></mat-divider>
+          <div class="permissions-container">
+            <h3 class="permission-label">{{ Texts.Reports | Translate }}&nbsp;&nbsp;:&nbsp;&nbsp;</h3>
+            <mat-slide-toggle formControlName="70">{{ Texts.Get | Translate }}</mat-slide-toggle>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-divider inset></mat-divider>
+      <mat-card-actions>
+        <button id="clearRoleForm" *ngIf="!editing" class="transitionButton" type="reset" mat-raised-button color="accent">{{ Texts.Cancel | Translate }}
+          <mat-icon>clear</mat-icon></button>
+        <button *ngIf="!editing" [disabled]="!roleForm.valid" type="submit" mat-raised-button
+          class="submitButton transitionButton">{{ Texts.Save | Translate }} <mat-icon>save</mat-icon></button>
+        <button *ngIf="editing" [disabled]="!roleForm.valid" type="button" (click)="submitEdit()" mat-raised-button
+          class="submitButton transitionButton">{{ Texts.Save | Translate }} <mat-icon>save</mat-icon></button>
+      </mat-card-actions>
+    </form>
+  </mat-dialog-content>
+</div>
+<mat-card-footer *ngIf="!editing">
+  main card footer
+</mat-card-footer>

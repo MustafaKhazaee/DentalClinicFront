@@ -1,0 +1,26 @@
+<mat-card-title>{{ Texts.PatientManagement | Translate }}</mat-card-title>
+<div class="searchBar">
+  <label for="username">
+    {{ Texts.Firstname | Translate }} : <input class="searchBarInput" #firstname type="text">
+  </label>
+  <label for="lastname">
+    {{ Texts.Lastname | Translate }} : <input class="searchBarInput" #lastname type="text">
+  </label>
+  <label for="lastname">
+    {{ Texts.Mobile | Translate }} : <input class="searchBarInput" #mobile type="text">
+  </label>
+</div>
+<app-table
+  *ngIf="dataLoaded"
+  [table]="table"
+  [excludedColumns]="excludedColumns"
+  [canEdit]="canEdit"
+  [canDelete]="canDelete"
+  (editRow)="editPatient($event)"
+  (deleteRow)="deletePatient($event)"
+  (tablePaging)="handlePaging($event)"
+  (rowDetails)="showDetails($event)">
+</app-table>
+<mat-card-footer>
+  main card footer
+</mat-card-footer>

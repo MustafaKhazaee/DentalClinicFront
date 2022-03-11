@@ -1,0 +1,14 @@
+<mat-card-title>{{ Texts.Profile | Translate }}</mat-card-title>
+<div class="form-container profileContainer">
+  <mat-dialog-content>
+      <mat-card-content>
+        <ng-container *ngFor="let r of genericObject | keyvalue: originalOrder">
+          <div class="profileRow">{{ r.key | capitalizeFirstLetter}} : {{ r.value }}</div>
+        </ng-container>
+      </mat-card-content>
+      <mat-divider inset ></mat-divider>
+  </mat-dialog-content>
+  <mat-card-actions>
+    <button class="profile-close-button" (click)="close()" color="warn" mat-raised-button>Close <mat-icon>cancel</mat-icon></button>
+  </mat-card-actions>
+</div>

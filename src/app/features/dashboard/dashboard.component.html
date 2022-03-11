@@ -1,0 +1,21 @@
+<mat-card-title>{{ Texts.Dashboard | Translate }}</mat-card-title>
+<div class="form-container">
+  <mat-card-content class="flex-box-show">
+      <div class="half-split">
+        <div (click)="navigate(item.link)" *ngFor="let item of dashboardItems" class="dashboard-item">
+          <i [class]="item.class">&nbsp;{{ item.number }}</i>
+        </div>
+      </div>
+      <div *ngIf="renderChart && isDesktop" class="half-split">
+        <canvas baseChart
+          [data]="pieChartData"
+          [legend]="pieChartLegend"
+          [labels]="pieCharLabels"
+          [options]="pieChartOptions"
+          [plugins]="pieChartPlugins"
+          [chartType]="pieChartType">
+        </canvas>
+    </div>
+
+  </mat-card-content>
+</div>

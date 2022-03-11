@@ -1,0 +1,44 @@
+<mat-sidenav-container [dir]='appDirection' class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>
+      <mat-toolbar-row class="myToolbar">{{ Texts.DentalClinic | Translate }}</mat-toolbar-row>
+    </mat-toolbar>
+    <mat-nav-list>
+      <ng-material-multilevel-menu [configuration]='menuConfiguration' [items]='getMenuItems()'>
+      </ng-material-multilevel-menu>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button class="mat-menubar-button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <button class="mat-menubar-button" (click)="changeAppDir()" mat-icon-button><mat-icon>swap_horiz</mat-icon></button>
+      <button class="mat-menubar-button" (click)="fullScreenToggle()" mat-icon-button><mat-icon>fullscreen</mat-icon></button>
+      <div class="toolbar-splitter"></div>
+      <button class="mat-menubar-button" mat-raised-button [mat-menu-trigger-for]="menuUser">{{ userDetails }}</button>
+      <button class="mat-menubar-button" mat-icon-button [mat-menu-trigger-for]="menuUser"><mat-icon>person</mat-icon></button>
+      <mat-menu #menuUser>
+        <button mat-menu-item><mat-icon>account_circle</mat-icon>{{ Texts.Profile | Translate }}</button>
+        <button (click)="logout()" mat-menu-item><mat-icon>lock</mat-icon>{{ Texts.Logout | Translate }}</button>
+      </mat-menu>
+      <button class="mat-menubar-button" mat-icon-button [mat-menu-trigger-for]="menuChat"><mat-icon>chat</mat-icon></button>
+      <mat-menu #menuChat>
+        <button mat-menu-item>Chat 1</button>
+        <button mat-menu-item>Chat 2</button>
+        <button mat-menu-item>Chat 3</button>
+        <button mat-menu-item>Chat 4</button>
+      </mat-menu>
+      <button class="mat-menubar-button" mat-icon-button [mat-menu-trigger-for]="menuLang"><mat-icon>language</mat-icon></button>
+      <mat-menu #menuLang>
+        <button mat-menu-item (click)="changeLang('en')">{{ Texts.English | Translate }}</button>
+        <button mat-menu-item (click)="changeLang('fa')">{{ Texts.Dari | Translate }}</button>
+      </mat-menu>
+    </mat-toolbar>
+    <mat-progress-bar *ngIf="showProgressBar" #globalProgressBar color="green" mode="indeterminate"></mat-progress-bar>
+      <mat-card class="container">
+        <router-outlet>
+        </router-outlet>
+      </mat-card>
+  </mat-sidenav-content>
+</mat-sidenav-container>

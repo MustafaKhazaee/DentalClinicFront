@@ -1,0 +1,48 @@
+<mat-card-title *ngIf="!editing">{{ Texts.ExpenseManagement | Translate }}</mat-card-title>
+<div class="form-container">
+  <mat-dialog-content>
+    <form [formGroup]="expenseForm" (submit)="submitForm()">
+      <mat-card-content class="flex-box-show">
+        <mat-form-field appearance="outline">
+          <mat-label>{{ Texts.ItemName | Translate }}</mat-label>
+          <input matInput formControlName="itemName">
+          <mat-error>Item Name is required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ Texts.PricePerItem | Translate }}</mat-label>
+          <input type="number" matInput formControlName="pricePerItem">
+          <mat-error>Price Per Item is required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ Texts.Count | Translate }}</mat-label>
+          <input type="number" matInput formControlName="count">
+          <mat-error>Count is required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ Texts.Date | Translate }}</mat-label>
+          <input matInput formControlName="date" [matDatepicker]="myDatePicker">
+          <mat-datepicker-toggle matSuffix [for]="myDatePicker">
+          </mat-datepicker-toggle>
+          <mat-datepicker #myDatePicker></mat-datepicker>
+          <mat-error>Date is required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ Texts.Description | Translate }}</mat-label>
+          <input matInput formControlName="description">
+        </mat-form-field>
+      </mat-card-content>
+      <mat-divider inset *ngIf="!editing"></mat-divider>
+      <mat-card-actions>
+        <button id="clearExpenseForm" *ngIf="!editing" class="transitionButton" type="reset" mat-raised-button color="accent">{{ Texts.Cancel | Translate }}
+          <mat-icon>clear</mat-icon></button>
+        <button *ngIf="!editing" [disabled]="!expenseForm.valid" type="submit" mat-raised-button
+          class="submitButton transitionButton">{{ Texts.Save | Translate }} <mat-icon>save</mat-icon></button>
+        <button *ngIf="editing" [disabled]="!expenseForm.valid" type="button" (click)="submitEdit()" mat-raised-button
+          class="submitButton transitionButton">{{ Texts.Save | Translate }} <mat-icon>save</mat-icon></button>
+      </mat-card-actions>
+    </form>
+  </mat-dialog-content>
+</div>
+<mat-card-footer *ngIf="!editing">
+  main card footer
+</mat-card-footer>

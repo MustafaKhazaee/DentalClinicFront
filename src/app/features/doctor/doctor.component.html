@@ -1,0 +1,23 @@
+<mat-card-title>{{ Texts.DoctorManagement | Translate }}</mat-card-title>
+<div class="searchBar">
+  <label for="username">
+    {{ Texts.Firstname | Translate }} : <input class="searchBarInput" #firstname type="text">
+  </label>
+   <label for="lastname">
+    {{ Texts.Lastname | Translate }} : <input class="searchBarInput" #lastname type="text">
+  </label>
+</div>
+<app-table
+  *ngIf="dataLoaded"
+  [table]="table"
+  [excludedColumns]="excludedColumns"
+  [canEdit]="canEdit"
+  [canDelete]="canDelete"
+  (editRow)="editDoctor($event)"
+  (deleteRow)="deleteDoctor($event)"
+  (tablePaging)="handlePaging($event)"
+  (rowDetails)="showDetails($event)">
+</app-table>
+<mat-card-footer>
+  main card footer
+</mat-card-footer>

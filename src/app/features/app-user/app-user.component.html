@@ -1,0 +1,20 @@
+<mat-card-title>{{ Texts.UserManagement | Translate }}</mat-card-title>
+<div class="searchBar">
+  <label for="username">
+    {{ Texts.Username | Translate }} : <input class="searchBarInput" #username type="text">
+  </label>
+</div>
+<app-table
+  *ngIf="dataLoaded"
+  [table]="table"
+  [excludedColumns]="excludedColumns"
+  [canDelete]="canDelete"
+  [canEdit]="canEdit"
+  (editRow)="editAppUser($event)"
+  (deleteRow)="deleteAppUser($event)"
+  (tablePaging)="handlePaging($event)"
+  (rowDetails)="showDetails($event)">
+</app-table>
+<mat-card-footer>
+  main card footer
+</mat-card-footer>

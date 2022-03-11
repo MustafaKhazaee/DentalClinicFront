@@ -1,0 +1,35 @@
+<div class="table-container"><h2 *ngIf="!this.headers">No Data</h2>
+<table *ngIf="this.headers" class="table-layout">
+  <thead>
+    <th>#</th>
+    <ng-container *ngFor="let item of headers | keyvalue: originalOrder">
+      <th *ngIf="excludedColumns.indexOf(item.key) == -1">
+        {{ item.key | capitalizeFirstLetter }}
+      </th>
+    </ng-container>
+    <th *ngIf="this.headers && showOpertions">Operations</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of rows;">
+      <td class="not-operation">{{ rows.indexOf(row)+1 }}</td>
+      <ng-container *ngFor="let item of row | keyvalue: originalOrder">
+        <td class="not-operation" *ngIf="excludedColumns.indexOf(item.key+'') == -1">
+          {{ item.value }}
+        </td>
+      </ng-container>
+      <td *ngIf="showOpertions">
+        <button *ngIf="canEdit" (click)="edit(row)" mat-button mat-mini-fab color="accent"><mat-icon>edit</mat-icon></button>
+        <button *ngIf="canDelete" (click)="delete(row)" mat-button mat-mini-fab color="warn"><mat-icon>delete</mat-icon></button>
+        <button (click)="details(row)" mat-button mat-mini-fab color="primary"><mat-icon>info</mat-icon></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<mat-paginator
+  [length]="table.rowCount"
+  [pageSize]="table.pageSize"
+  [pageIndex]="table.pageIndex"
+  [pageSizeOptions]="[5, 10, 25, 50, 100]"
+  (page)="handlePaging($event)">
+</mat-paginator>
+</div>
