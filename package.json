@@ -26,6 +26,7 @@
     "@microsoft/signalr": "^6.0.0",
     "chart.js": "^2.9.3",
     "font-awesome": "^4.7.0",
+    "http-server": "^14.1.0",
     "material-icons-font": "^2.1.0",
     "ng-material-multilevel-menu": "^5.5.3",
     "ng2-charts": "^2.2.3",
